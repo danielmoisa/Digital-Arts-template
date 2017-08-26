@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+// COLORS
+$black: #222831;
+$white: #fff;
+$purple-transparent: rgba(109, 66, 199, 0.7);
+$dark-blue-transparent: rgba(57, 71, 96, 0.95);
+$purple: #6d42c7;
+$blue: #60769f;
+$light-blue: #bdc5db;
+
+
+// BASE 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body, html {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: .05rem;
+    width: 100%;
+    color: $white;
+    text-rendering: optimizeLegibility;
+}
+
+// BG VIDEO
+.bg-video {
+    display: block;
+    position: fixed;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+// COMING SOON SECTION
+.coming-soon-section {
+    background: $purple-transparent;
+    height: 100%;
+    padding: 4rem 0;
+    .site-logo {
+        display: inline-block;
+        margin: 3rem auto 7rem auto;
+        font-family: 'Indie Flower', cursive;
+        font-size: 2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: .4rem;
+        padding: .7rem;
+        color: $purple;
+        background:  $white;
+        letter-spacing: .1rem;
+    }
+    .site-title {
+        font-size: 3rem;
+        font-weight: 400;
+        margin-bottom: 6rem;
+    }
+    .coming-soon {
+        margin-bottom: 5rem;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: .15rem;
+    }
+
+}
+
+// CONTACT SECTION
+.contact-section {
+    height: 100%;
+    background:  $dark-blue-transparent;
+    padding: 5rem 0;
+    .title {
+        font-weight: 500;
+        padding-top: 5rem;
+        margin-bottom: 3rem;
+    }
+    .sub-title {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: .09rem;
+        margin-bottom: 5rem;
+    }
+    .form {
+        margin: 0 4rem;
+        &__item {
+            display: block;
+            width: 100%;
+            min-width: 10rem;
+            max-width: 30rem;
+            height: 3.5rem;
+            margin: 1.2rem auto;
+            padding-left: .7rem;
+            letter-spacing: 0.06rem;
+            font-size: 1.2rem;
+            border: 2px solid $white;
+            border-radius: 1px;
+            background: transparent;
+            color: $white;
+        }
+        &__message {
+            display: block;
+            width: 100%;
+            min-width: 10rem;
+            max-width: 30rem;
+            height: 15.3rem;
+            margin: 4rem auto;
+            padding-top: .5rem;
+            padding-left: .7rem;
+            letter-spacing: 0.06rem;
+            font-size: 1.2rem;
+            border: 2px solid $white;
+            border-radius: 1px;
+            background: transparent;
+            color: $white;
+            resize: none;
+            
+        }
+        &__button {
+            width: 14rem;
+            height: 3.5rem;
+            color: $white;
+            background: transparent;
+            border: 2px solid $white;
+            border-radius: .2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05rem;
+            cursor: pointer;
+            margin-bottom: 7rem;
+            transition: 350ms all;
+            &:hover {
+                background: $blue;
+            }
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+  color: $light-blue;
+}
+:-moz-placeholder {
+  color: $light-blue;
+}
+::-moz-placeholder {
+  color: $light-blue;
+}
+:-ms-input-placeholder {
+  color: $light-blue;
+}
+textarea:focus, input:focus, button:active, button:focus {
+    outline: none;
+}
+
+// CSS grid layout for desktop and bigger screens
+@supports not (display: grid) {
+  .coming-soon,
+  .contact {
+      max-width: 50em;
+      margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 800px) {
+  @supports (display: grid) {
+
+    .coming-soon-section {
+      .site-title {
+        font-size: 4rem;
+        margin-top: .5rem;
+      }
+      .coming-soon {
+        font-size: 1.5rem;
+      }
+    }
+
+    .contact-section {
+      .title {
+        padding-top: 0;
+        padding-bottom: 1rem;
+        font-size: 3rem;
+      }
+
+      .sub-title {
+        margin: 2rem auto;
+        font-size: 1.2rem;
+      }
+    }
+
+    .form {
+      padding: 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: .01fr .01fr .01fr .01fr;
+      grid-template-areas:
+        "name msg"
+        "email msg"
+        "subject msg"
+        "btn btn";
+      grid-column-gap: 2.2rem;  
+    }
+
+    .form {
+      .form--name {
+        grid-area: name;
+      }
+
+      .form--email {
+        grid-area: email;
+      }
+
+      .form--subject {
+        grid-area: subject;
+      }
+
+      .form__message {
+        grid-area: msg;
+        margin-top: 1.3rem;
+      }
+
+      .form__button {
+        grid-area: btn;
+        margin: auto;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
